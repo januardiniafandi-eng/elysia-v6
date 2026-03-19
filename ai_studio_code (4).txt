@@ -1,0 +1,41 @@
+"use client";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'motion/react';
+import { User, Shield, Phone, ArrowRight } from 'lucide-react';
+import OTPModal from '@/components/OTPModal';
+
+export default function Register() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({ fullName: '', whatsapp: '', role: 'client' });
+  const [isOtpOpen, setIsOtpOpen] = useState(false);
+
+  const handleOtpConfirm = (otp: string) => {
+    setIsOtpOpen(false);
+    // Redirect menggunakan Next.js Router
+    if (formData.role === 'client') {
+      router.push('/client/dashboard');
+    } else {
+      router.push('/worker/dashboard');
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 pt-28 px-4">
+      <motion.div className="max-w-xl mx-auto p-8 bg-slate-900 rounded-3xl border border-slate-800">
+        <h2 className="text-3xl font-black text-white text-center mb-8">JOIN THE NETWORK</h2>
+        <form onSubmit={(e) => { e.preventDefault(); setIsOtpOpen(true); }} className="space-y-6">
+          <input 
+            required placeholder="Nama Lengkap"
+            className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-white"
+            onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+          />
+          <button className="w-full py-4 bg-neon-cyan text-slate-950 font-black rounded-xl">
+            DAFTAR SEKARANG
+          </button>
+        </form>
+      </motion.div>
+      <OTPModal isOpen={isOtpOpen} onClose={() => setIsOtpOpen(false)} onConfirm={handleOtpConfirm} phoneNumber={formData.whatsapp} />
+    </div>
+  );
+}

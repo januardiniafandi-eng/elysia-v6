@@ -1,0 +1,20 @@
+elysia-ai/
+├── app/
+│   ├── layout.tsx             # Layout utama (Navbar, Footer, Fonts)
+│   ├── page.tsx               # Landing Page (/)
+│   ├── globals.css            # CSS Tailwind
+│   ├── register/
+│   │   └── page.tsx           # Halaman Registrasi (/register)
+│   ├── login/
+│   │   └── page.tsx           # Halaman Login (/login)
+│   └── client/
+│       └── dashboard/
+│           └── page.tsx       # Dashboard Klien (/client/dashboard)
+├── components/
+│   └── OTPModal.tsx           # Komponen Reusable
+├── public/                    # Aset statis (gambar, favicon)
+├── .env.local                 # Variabel Environment (Jangan di-push ke Git)
+├── next.config.ts             # Konfigurasi Next.js
+├── package.json               # Dependensi
+├── tailwind.config.ts         # Konfigurasi Tailwind
+└── tsconfig.json              # Konfigurasi TypeScript
