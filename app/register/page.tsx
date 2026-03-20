@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
-import OTPModal from '@/components/OTPModal';
+import OTPModal from '../../components/OTPModal';
 
 export default function Register() {
   const router = useRouter();
